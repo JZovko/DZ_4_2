@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="ocjenaForma">
+      <label for="ocjenaInput">Unesite ocjenu (od 1 do 5): </label>
+      <input type="number" id="ocjenaInput" name="ocjena" min="1" max="5" />
+      <button type="button" onclick="ispisiOcenu()">Prikaži ocjenu</button>
+    </form>
+
+    <script>
+      function ispisiOcenu() {
+        // Dohvati vrijednost iz tekstualnog polja
+        var ocjenaInput = document.getElementById("ocjenaInput");
+        var ocjena = ocjenaInput.value;
+
+        // Konvertiraj ocjenu u numerički tip
+        ocjena = parseInt(ocjena, 10);
+
+        // Provjeri jesu li uneseni podaci ispravni
+        if (!isNaN(ocjena) && ocjena >= 1 && ocjena <= 5) {
+          // Prikazi alert s odgovarajućom ocjenom
+          switch (ocjena) {
+            case 1:
+              alert("Ocjena: Nedovoljan");
+              break;
+            case 2:
+              alert("Ocjena: Dovoljan");
+              break;
+            case 3:
+              alert("Ocjena: Dobar");
+              break;
+            case 4:
+              alert("Ocjena: Vrlo dobar");
+              break;
+            case 5:
+              alert("Ocjena: Odličan");
+              break;
+            default:
+              alert("Unesite ocjenu između 1 i 5.");
+              break;
+          }
+        } else {
+          // Ako unos nije ispravan, prikaži poruku
+          alert("Unesite ispravnu ocjenu (od 1 do 5).");
+        }
+      }
+    </script>
+  </body>
+</html>

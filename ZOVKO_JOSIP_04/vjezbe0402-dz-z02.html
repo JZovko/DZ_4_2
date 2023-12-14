@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="promijeniPozadinu" onclick="promijeniPozadinu()">
+      Promijeni pozadinu
+    </button>
+    <p id="trenutnaBoja">Trenutna boja: #FFFFFF</p>
+
+    <script>
+      function getRandomColor() {
+        var letters = "0123456789ABCDEF";
+        var color = "#";
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+
+      function promijeniPozadinu() {
+        var novaBoja = getRandomColor();
+
+        // Postavljanje nove boje pozadine
+        document.body.style.backgroundColor = novaBoja;
+
+        // Ispis trenutne boje ispod dugmeta
+        var trenutnaBojaElement = document.getElementById("trenutnaBoja");
+        trenutnaBojaElement.textContent = "Trenutna boja: " + novaBoja;
+      }
+    </script>
+  </body>
+</html>

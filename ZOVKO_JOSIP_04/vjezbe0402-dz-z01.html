@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function izracunajSredine() {
+        var unos = prompt("Unesite brojeve odvojene zarezom:");
+        var brojevi = unos.split(",").map(function (item) {
+          return item.trim();
+        });
+        var aritmeticka = aritmetickaSredina(brojevi);
+        var geometrijska = geometrijskaSredina(brojevi);
+        var resultDiv = document.createElement("div");
+        resultDiv.innerHTML =
+          "Uneseni brojevi: " +
+          input +
+          "<br>Aritmetička sredina: " +
+          aritmeticka.toFixed(2) +
+          "<br> Geometrijska sredina: " +
+          geometrijska.toFixed(2);
+        document.body.appendChild(resultDiv);
+      }
+
+      function aritmetickaSredina(brojevi) {
+        var sum = 0;
+        for (var i = 0; i < brojevi.length; i++) {
+          sum += parseInt(brojevi[i], 10);
+        }
+        return sum / brojevi.length;
+      }
+      function geometrijskaSredina(brojevi) {
+        var product = 1;
+        for (var i = 0; i < brojevi.length; i++) {
+          product *= parseInt(brojevi[i], 10);
+        }
+        return Math.pow(product, 1 / brojevi.length);
+      }
+
+      window.onload = izracunajSredine;
+    </script>
+  </body>
+</html>

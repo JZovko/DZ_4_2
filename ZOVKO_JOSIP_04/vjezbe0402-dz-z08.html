@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Input polja za unos operanada -->
+    <input
+      type="text"
+      id="operand1"
+      placeholder="Unesite operand 1"
+    /><br /><br />
+    <input
+      type="text"
+      id="operand2"
+      placeholder="Unesite operand 2"
+    /><br /><br /><br />
+
+    <!-- Buttoni za osnovne operacije -->
+    <button onclick="izracunaj('+')">+</button>
+    <button onclick="izracunaj('-')">-</button>
+    <button onclick="izracunaj('*')">*</button>
+    <button onclick="izracunaj('/')">/</button><br /><br />
+
+    <!-- Buttoni za trigonometrijske funkcije -->
+    <button onclick="izracunajSin()">sin</button>
+    <button onclick="izracunajCos()">cos</button>
+    <button onclick="izracunajTan()">tan</button><br /><br />
+
+    <!-- Buttoni za logaritamske funkcije -->
+    <button onclick="izracunajLn()">ln</button>
+    <button onclick="izracunajLog()">log</button><br /><br />
+
+    <!-- Buttoni za potenciranje -->
+    <button onclick="izracunajPotenciju(2)">^2</button>
+    <button onclick="izracunajPotenciju(3)">^3</button>
+    <button onclick="izracunajPotencijuN()">^n</button><br /><br />
+
+    <script>
+      function izracunaj(operacija) {
+        var operand1 = parseFloat(document.getElementById("operand1").value);
+        var operand2 = parseFloat(document.getElementById("operand2").value);
+
+        if (isNaN(operand1) || isNaN(operand2)) {
+          alert("Unesite ispravne operande.");
+          return;
+        }
+
+        var rezultat;
+        switch (operacija) {
+          case "+":
+            rezultat = operand1 + operand2;
+            break;
+          case "-":
+            rezultat = operand1 - operand2;
+            break;
+          case "*":
+            rezultat = operand1 * operand2;
+            break;
+          case "/":
+            rezultat = operand1 / operand2;
+            break;
+        }
+
+        prikaziRezultat(rezultat);
+      }
+
+      function izracunajSin() {
+        var operand = parseFloat(document.getElementById("operand1").value);
+        if (isNaN(operand)) {
+          alert("Unesite ispravan operand.");
+          return;
+        }
+
+        var rezultat = Math.sin(operand);
+        prikaziRezultat(rezultat);
+      }
+
+      function izracunajCos() {
+        var operand = parseFloat(document.getElementById("operand1").value);
+        if (isNaN(operand)) {
+          alert("Unesite ispravan operand.");
+          return;
+        }
+
+        var rezultat = Math.cos(operand);
+        prikaziRezultat(rezultat);
+      }
+
+      function izracunajTan() {
+        var operand = parseFloat(document.getElementById("operand1").value);
+        if (isNaN(operand)) {
+          alert("Unesite ispravan operand.");
+          return;
+        }
+
+        var rezultat = Math.tan(operand);
+        prikaziRezultat(rezultat);
+      }
+
+      function izracunajLn() {
+        var operand = parseFloat(document.getElementById("operand1").value);
+        if (isNaN(operand) || operand <= 0) {
+          alert("Unesite ispravan operand (veći od 0).");
+          return;
+        }
+
+        var rezultat = Math.log(operand);
+        prikaziRezultat(rezultat);
+      }
+
+      function izracunajLog() {
+        var operand = parseFloat(document.getElementById("operand1").value);
+        if (isNaN(operand) || operand <= 0) {
+          alert("Unesite ispravan operand (veći od 0).");
+          return;
+        }
+
+        var rezultat = Math.log10(operand);
+        prikaziRezultat(rezultat);
+      }
+
+      function izracunajPotencijuN() {
+        var operand1 = parseFloat(document.getElementById("operand1").value);
+        var operand2 = parseFloat(document.getElementById("operand2").value);
+
+        if (isNaN(operand1) || isNaN(operand2)) {
+          alert("Unesite ispravne operande.");
+          return;
+        }
+
+        var rezultat = Math.pow(operand1, operand2);
+        prikaziRezultat(rezultat);
+      }
+
+      function izracunajPotenciju(n) {
+        var operand = parseFloat(document.getElementById("operand1").value);
+        if (isNaN(operand)) {
+          alert("Unesite ispravan operand.");
+          return;
+        }
+
+        var rezultat = Math.pow(operand, n);
+        prikaziRezultat(rezultat);
+      }
+
+      function prikaziRezultat(rezultat) {
+        alert("Rezultat operacije: " + rezultat);
+      }
+    </script>
+  </body>
+</html>

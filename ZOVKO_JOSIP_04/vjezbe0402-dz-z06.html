@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="zbrajanjeForma">
+      <label for="broj1">X = </label>
+      <input type="number" id="broj1" name="broj1" required /><br />
+
+      <label for="broj2">Y = </label>
+      <input type="number" id="broj2" name="broj2" required /><br /><br />
+
+      <button type="button" onclick="zbroji()">Zbroji</button><br /><br />
+
+      <label for="rezultat">Rezultat: </label>
+      <input type="text" id="rezultat" name="rezultat" readonly /><br />
+    </form>
+
+    <script>
+      function zbroji() {
+        // Dohvati vrijednosti iz polja
+        var broj1Input = document.getElementById("broj1");
+        var broj2Input = document.getElementById("broj2");
+        var rezultatInput = document.getElementById("rezultat");
+
+        // Parsiraj vrijednosti u brojeve
+        var broj1 = parseFloat(broj1Input.value);
+        var broj2 = parseFloat(broj2Input.value);
+
+        // Provjeri jesu li uneseni brojevi
+        if (!isNaN(broj1) && !isNaN(broj2)) {
+          // Izračunaj zbroj
+          var rezultat = broj1 + broj2;
+
+          // Postavi rezultat u polje
+          rezultatInput.value = rezultat;
+        } else {
+          // Ako nisu uneseni ispravni brojevi, postavi poruku u rezultat
+          rezultatInput.value = "Unesite ispravne brojeve.";
+        }
+      }
+    </script>
+  </body>
+</html>

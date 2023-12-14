@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form class="ocjenaForm">
+      <label for="ocjenaInput">Unesite ocjenu: (1-5)</label>
+      <input type="number" id="ocjenaInput" name="ocjena" min="1" max="5" />
+      <button type="button" onclick="ispisiOcjenu()">Potvrdi</button>
+    </form>
+
+    <p id="ispisOcjene"></p>
+
+    <script>
+      function ispisiOcjenu() {
+        var ocjenaInput = document.getElementById("ocjenaInput");
+        var ocjena = ocjenaInput.value;
+
+        ocjena = parseInt(ocjena, 10);
+
+        if (!isNaN(ocjena) && ocjena >= 1 && ocjena <= 5) {
+          var ispisOcjeneElement = document.getElementById("ispisOcjene");
+          ispisOcjeneElement.textContent = "Ocjena: " + ocjena + " - ";
+
+          // Prikazi tekstualni opis ocjene
+          switch (ocjena) {
+            case 1:
+              ispisOcjeneElement.textContent += "Nedovoljan";
+              break;
+            case 2:
+              ispisOcjeneElement.textContent += "Dovoljan";
+              break;
+            case 3:
+              ispisOcjeneElement.textContent += "Dobar";
+              break;
+            case 4:
+              ispisOcjeneElement.textContent += "Vrlo dobar";
+              break;
+            case 5:
+              ispisOcjeneElement.textContent += "Odličan";
+              break;
+          }
+        } else {
+          // Ako unos nije ispravan, ispis poruke ispod forme
+          var ispisOcjeneElement = document.getElementById("ispisOcjene");
+          ispisOcjeneElement.textContent =
+            "Unesite ispravnu ocjenu (od 1 do 5).";
+        }
+      }
+    </script>
+  </body>
+</html>

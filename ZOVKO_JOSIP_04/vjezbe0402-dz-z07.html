@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="godineForma">
+      <label for="dan">Unesite dan (01-31): </label>
+      <input
+        type="text"
+        id="dan"
+        name="dan"
+        pattern="^(0[1-9]|[12][0-9]|3[01])$"
+        required
+      /><br /><br />
+
+      <label for="mjesec">Unesite mjesec (01-12): </label>
+      <input
+        type="text"
+        id="mjesec"
+        name="mjesec"
+        pattern="^(0[1-9]|1[0-2])$"
+        required
+      /><br /><br />
+
+      <label for="godina">Unesite godinu (npr. 1980): </label>
+      <input
+        type="text"
+        id="godina"
+        name="godina"
+        pattern="^\d{4}$"
+        required
+      /><br /><br /><br />
+
+      <button type="button" onclick="izracunajGodine()">Izračunaj</button>
+    </form>
+
+    <script>
+      function izracunajGodine() {
+        // Dohvati vrijednosti iz polja
+        var danInput = document.getElementById("dan");
+        var mjesecInput = document.getElementById("mjesec");
+        var godinaInput = document.getElementById("godina");
+
+        // Parsiraj vrijednosti
+        var dan = parseInt(danInput.value, 10);
+        var mjesec = parseInt(mjesecInput.value, 10);
+        var godina = parseInt(godinaInput.value, 10);
+
+        // Provjeri jesu li uneseni podaci ispravni
+        if (
+          isNaN(dan) ||
+          isNaN(mjesec) ||
+          isNaN(godina) ||
+          dan < 1 ||
+          dan > 31 ||
+          mjesec < 1 ||
+          mjesec > 12
+        ) {
+          alert("Unesite ispravne podatke.");
+          return;
+        }
+
+        // Dobavi trenutni datum
+        var danas = new Date();
+
+        // Postavi unesene podatke u Date objekt
+        var datumRodjenja = new Date(godina, mjesec - 1, dan);
+
+        // Izračunaj razliku u godinama
+        var razlika = danas.getFullYear() - datumRodjenja.getFullYear();
+
+        // Provjeri jesu li rođendan već prošao ove godine
+        if (
+          danas.getMonth() < datumRodjenja.getMonth() ||
+          (danas.getMonth() === datumRodjenja.getMonth() &&
+            danas.getDate() < datumRodjenja.getDate())
+        ) {
+          razlika--;
+        }
+
+        // Prikazi rezultat u alert prozoru
+        alert("Imate " + razlika + " godina!");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #zaruljaDiv {
+        display: flex;
+        align-items: center;
+      }
+
+      #prekidac {
+        margin-left: 10px; /* Prilagodite razmak između prekidača i žarulje prema potrebi */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="zaruljaDiv">
+      <img
+        id="zaruljaSlika"
+        src="https://iili.io/Juaphc7.png"
+        alt="ugasena_zarulja"
+      />
+      <button id="prekidac" onclick="promijeniStanje()">
+        <img id="prekidacSlika" src="https://iili.io/JuapjS9.png" alt="off" />
+      </button>
+    </div>
+
+    <script>
+      var stanje = false; // false = ugašeno, true = upaljeno
+
+      function promijeniStanje() {
+        var zaruljaSlika = document.getElementById("zaruljaSlika");
+        var prekidacSlika = document.getElementById("prekidacSlika");
+
+        if (stanje) {
+          zaruljaSlika.src = "https://iili.io/JuapOAu.png";
+          prekidacSlika.src = "https://iili.io/JuapjS9.png";
+        } else {
+          zaruljaSlika.src = "https://iili.io/Juaphc7.png";
+          prekidacSlika.src = "https://iili.io/JuapN9e.png";
+        }
+
+        stanje = !stanje;
+      }
+    </script>
+  </body>
+</html>

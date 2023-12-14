@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="registarskaForma">
+      <label for="registarskaOznaka"
+        >Unesite registarsku oznaku (X00-X-000):
+      </label>
+      <input type="text" id="registarskaOznaka" name="registarskaOznaka" />
+      <button type="button" onclick="validirajOznaku()">Validacija</button>
+    </form>
+
+    <script>
+      function validirajOznaku() {
+        // Dohvati vrijednost iz tekstualnog polja
+        var registarskaInput = document.getElementById("registarskaOznaka");
+        var registarskaOznaka = registarskaInput.value;
+
+        // Kreiraj regularni izraz za validaciju registarske oznake
+        var regex = /^[A-Z]\d{2}-[A-Z]-\d{3}$/;
+
+        // Provjeri da li je registarska oznaka ispravnog formata
+        if (regex.test(registarskaOznaka)) {
+          // Prikazi poruku o ispravnosti
+          alert("Ispravna registarska oznaka!");
+          return true;
+        } else {
+          // Prikazi poruku o neispravnosti
+          alert("Neispravna registarska oznaka. Ispravan format: X00-X-000");
+          return false;
+        }
+      }
+    </script>
+  </body>
+</html>
